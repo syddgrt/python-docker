@@ -1,0 +1,25 @@
+# .github/workflows/docker-action.yml
+
+name: Docker Action
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check out the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Build the Docker image
+      - name: Build Docker image
+        run: docker build -t hello-docker .
+
+      # Run the Docker container
+      - name: Run Docker container
+        run: docker run hello-docker
